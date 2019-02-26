@@ -6,6 +6,9 @@ TagManager:
   tags:
   - SnowPile
   - SnowTile
+  - Ground
+  - Snowball
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -22,12 +22,9 @@ public class SnowPilePrefab : MonoBehaviour
         Snowball = GameObject.Find("Snowball");
         pos = Snowball.transform.position;
         //startPos = pos;
-        pos.x -= 2;
+        //pos.x -= 2;
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            GameObject snow = (GameObject)Instantiate(SnowPrefab, pos, transform.rotation, null);
-        }
+
         
         /*
         if (transform.hasChanged && transform.position.x >= startPos.x)

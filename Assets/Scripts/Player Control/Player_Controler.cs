@@ -23,7 +23,10 @@ public class Player_Controler : MonoBehaviour
     private float old_pos;
     private bool left;
     private bool right;
+    public int snow;
     public GameObject SnowTilePrefab;
+    public GameObject SnowPrefab;
+
     public GameObject Snowball;
     public Vector3 pos;
 
@@ -44,54 +47,6 @@ public class Player_Controler : MonoBehaviour
     {
         Snowball = GameObject.Find("Snowball");
         pos = Snowball.transform.position;
-        pos.x -= 2;
-
-        if (rb.velocity.magnitude > .3)
-        {
-            if (Vector3.Angle(transform.forward, Vector3.forward) <= 180.0)
-            {
-                if (this.transform.localScale.x > 0.3 && this.transform.localScale.y > 0.3)
-                {
-                    GameObject snow = (GameObject)Instantiate(SnowTilePrefab, pos, transform.rotation, null);
-                    this.transform.localScale = this.transform.localScale - sizeDelta;
-                    Destroy(snow, 5);
-                }                
-            }
-            /*
-            if (this.transform.localScale.x > 0.3 && this.transform.localScale.y > 0.3)
-            {
-                this.transform.localScale = this.transform.localScale - sizeDelta;
-                GameObject snow = (GameObject)Instantiate(SnowTilePrefab, pos, transform.rotation, null);
-            }
-            */
-
-        }
-        
-        /*
-        if (old_pos < transform.position.x)
-        {
-            //print("moving right");
-            right = true;
-            left = false;
-        }
-        if (old_pos > transform.position.x)
-        {
-            //print("moving left");
-            right = false;
-            left = true;
-        }
-        old_pos = transform.position.x;
-
-        
-        if (right == true)
-        {
-            //this.transform.localScale = this.transform.localScale - sizeDelta;
-        }
-        else if (left == true)
-        {
-            //this.transform.localScale = this.transform.localScale - sizeDelta;
-        }                   
-        */
 
         rb.AddForce(movementDelta * Input.GetAxis("Horizontal"));
 
@@ -107,20 +62,10 @@ public class Player_Controler : MonoBehaviour
             if (this.transform.localScale.x > 0.3 && this.transform.localScale.y > 0.3)
             {
                 this.transform.localScale = this.transform.localScale - sizeDelta;
+                GameObject snow = (GameObject)Instantiate(SnowPrefab, pos, transform.rotation, null);
+
             }
-
-            //this.transform.localScale = this.transform.localScale - sizeDelta;
-            //movementDelta.y = jumpForce;
         }
-
-        /*
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
-        {
-            isJumping = true;
-            rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
-            //movementDelta.y = jumpForce;
-        }
-        */
 
     }
 
@@ -134,24 +79,24 @@ public class Player_Controler : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isJumping = false;
-            //rb.velocity = Vector2.zero;
         }
 
         if (collision.gameObject.CompareTag("SnowPile"))
         {
-            isJumping = false;
+            //isJumping = false;
             this.transform.localScale = this.transform.localScale + sizeGrowPile;
             Destroy(collision.gameObject);
             
         }
         if (collision.gameObject.CompareTag("SnowTile"))
         {
-            isJumping = false;
+            //isJumping = false;
             this.transform.localScale = this.transform.localScale + sizeGrowTile;
             Destroy(collision.gameObject);
 
         }
     }
+
 
     private void OnCollisionExit(Collision collision)
     {
