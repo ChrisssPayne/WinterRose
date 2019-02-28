@@ -23,7 +23,7 @@ public class Player_Controler : MonoBehaviour
     private float old_pos;
     private bool left;
     private bool right;
-    public int snow;
+    public float snow;
     public GameObject SnowTilePrefab;
     public GameObject SnowPrefab;
 
@@ -40,13 +40,15 @@ public class Player_Controler : MonoBehaviour
         old_pos = transform.position.x;
         rb = GetComponent<Rigidbody2D>();
         movementDelta.x = movementSpeed;
+
+        resizePlayer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Snowball = GameObject.Find("Snowball");
-        pos = Snowball.transform.position;
+        //Snowball = GameObject.Find("Snowball");
+        //pos = this.transform.position;
 
         rb.AddForce(movementDelta * Input.GetAxis("Horizontal"));
 
@@ -62,16 +64,48 @@ public class Player_Controler : MonoBehaviour
             if (this.transform.localScale.x > 0.3 && this.transform.localScale.y > 0.3)
             {
                 this.transform.localScale = this.transform.localScale - sizeDelta;
-                GameObject snow = (GameObject)Instantiate(SnowPrefab, pos, transform.rotation, null);
-
+                //GameObject snow = (GameObject)Instantiate(SnowPrefab, pos, transform.rotation, null);
             }
         }
-
     }
 
     private void CalculateRotation()
     {
-    
+        
+    }
+
+    private void resizePlayer()
+    {
+        this.transform.localScale = (sizeDelta * snow) + Vector3.one * 0.3f;
+    }
+    public void killPlayer()
+    {
+        this.rb.velocity = Vector2.zero;
+        this.rb.isKinematic = false;
+        this.enabled = false;
+    }
+
+    public void removeSnow(float amountToRemove)
+    {
+
+        if (amountToRemove > 0)
+        {
+            snow -= amountToRemove;
+            resizePlayer();
+        }
+
+        if(snow < 0)
+            killPlayer();
+       
+    }
+
+    public void addSnow(float amountToAdd)
+    {
+        if (amountToAdd > 0)
+        {
+            snow += amountToAdd;
+            resizePlayer();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -86,8 +120,8 @@ public class Player_Controler : MonoBehaviour
             //isJumping = false;
             this.transform.localScale = this.transform.localScale + sizeGrowPile;
             Destroy(collision.gameObject);
-            
         }
+
         if (collision.gameObject.CompareTag("SnowTile"))
         {
             //isJumping = false;

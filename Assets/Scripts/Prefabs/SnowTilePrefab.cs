@@ -8,34 +8,40 @@ public class SnowTilePrefab : MonoBehaviour
     public GameObject SnowPrefab;
     public GameObject Snowball;
     SpriteRenderer snowTileRenderer;
-    bool active;
+    Rigidbody2D rb;
+    public bool active;
 
-    public int snowChangeAmount;
+    public float snowChangeAmount = 1.0f;
     void Start()
     {
+        //rb = GetComponent<Rigidbody2D>();
+        //rb.isKinematic = false;
         snowTileRenderer = GetComponent<SpriteRenderer>();
-        active = false;
+        if (active)
+            snowTileRenderer.enabled = true;
+        else
+            snowTileRenderer.enabled = false;
     }
 
     private void Update()
     {
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Snowball"))
         {
             if (active)
             {
                 //give snow to snowball
-                collision.gameObject.GetComponent<Player_Controler>().snow += snowChangeAmount;
+                collision.gameObject.GetComponent<Player_Controler>().addSnow(snowChangeAmount);
                 snowTileRenderer.enabled = false;
                 active = false;
             }
             else
             {
                 //take snow from snowball
-                collision.gameObject.GetComponent<Player_Controler>().snow -= snowChangeAmount;
+                collision.gameObject.GetComponent<Player_Controler>().removeSnow(snowChangeAmount);
                 snowTileRenderer.enabled = true;
                 active = true;
             }
