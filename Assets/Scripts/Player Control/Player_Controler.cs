@@ -20,10 +20,8 @@ public class Player_Controler : MonoBehaviour
     private Vector2 movementDelta = Vector2.zero;
     private bool isJumping;
     private Vector3 startPos;
-    private float old_pos;
-    private bool left;
-    private bool right;
     public float snow;
+    public float jumpCost;
     public GameObject SnowTilePrefab;
     public GameObject SnowPrefab;
 
@@ -37,7 +35,6 @@ public class Player_Controler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        old_pos = transform.position.x;
         rb = GetComponent<Rigidbody2D>();
         movementDelta.x = movementSpeed;
 
@@ -63,8 +60,10 @@ public class Player_Controler : MonoBehaviour
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
             if (this.transform.localScale.x > 0.3 && this.transform.localScale.y > 0.3)
             {
-                this.transform.localScale = this.transform.localScale - sizeDelta;
-                //GameObject snow = (GameObject)Instantiate(SnowPrefab, pos, transform.rotation, null);
+                GameObject pile;
+                pile = Instantiate(SnowPrefab, this.transform.position, transform.rotation, null);
+                pile.GetComponent<SnowPilePrefab>().storedSnow = jumpCost;
+                removeSnow(jumpCost);
             }
         }
     }
@@ -118,15 +117,15 @@ public class Player_Controler : MonoBehaviour
         if (collision.gameObject.CompareTag("SnowPile"))
         {
             //isJumping = false;
-            this.transform.localScale = this.transform.localScale + sizeGrowPile;
-            Destroy(collision.gameObject);
+            //this.transform.localScale = this.transform.localScale + sizeGrowPile;
+            //Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.CompareTag("SnowTile"))
         {
             //isJumping = false;
-            this.transform.localScale = this.transform.localScale + sizeGrowTile;
-            Destroy(collision.gameObject);
+            //this.transform.localScale = this.transform.localScale + sizeGrowTile;
+            //Destroy(collision.gameObject);
 
         }
     }
