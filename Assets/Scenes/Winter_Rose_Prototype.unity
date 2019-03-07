@@ -3917,8 +3917,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SnowPrefab: {fileID: 790454008, guid: b4dad1031c473e443b93f990ee603eee, type: 3}
-  Snowball: {fileID: 1197873074}
   pos: {x: 0, y: 0, z: 0}
+  active: 0
+  storedSnow: 0
 --- !u!1001 &441564223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4519,7 +4520,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 30
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -10206,12 +10207,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da095c69731e5af45b046e2bc47b83c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  movementSpeed: 15
   sizeDelta: {x: 0.03, y: 0.03, z: 0}
-  sizeGrowPile: {x: 0.02, y: 0.02, z: 0}
+  sizeGrowPile: {x: 0.1, y: 0.1, z: 0}
   sizeGrowTile: {x: 0.01, y: 0.01, z: 0}
-  jumpForce: 100
+  jumpForce: 250
   snow: 50
+  jumpCost: 0
   SnowTilePrefab: {fileID: 2477261956093441111, guid: db54a0a43fa40524d867983ceb5d562a,
     type: 3}
   SnowPrefab: {fileID: 790454008, guid: b4dad1031c473e443b93f990ee603eee, type: 3}
@@ -10246,7 +10248,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.3
   m_AngularDrag: 0.1
   m_GravityScale: 2
   m_Material: {fileID: 0}
