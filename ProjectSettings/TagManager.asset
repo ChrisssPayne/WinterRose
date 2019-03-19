@@ -9,6 +9,9 @@ TagManager:
   - Ground
   - Snowball
   - Wall
+  - Lava
+  - Port1
+  - Port2
   layers:
   - Default
   - TransparentFX

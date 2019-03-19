@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_Controler : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class Player_Controler : MonoBehaviour
 
     public GameObject Snowball;
     public Vector3 pos;
+
+    public float LavaChangeAmount = 1.0f;
+
+    public float restartTime = 1f;
 
     //public objects
     //public GameObject SnowPile;
@@ -82,6 +87,12 @@ public class Player_Controler : MonoBehaviour
         this.rb.velocity = Vector2.zero;
         this.rb.isKinematic = false;
         this.enabled = false;
+        if (restartTime <= 0)
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+        restartTime = restartTime - 0.001f;
+        
     }
 
     public void removeSnow(float amountToRemove)
@@ -127,6 +138,18 @@ public class Player_Controler : MonoBehaviour
             //this.transform.localScale = this.transform.localScale + sizeGrowTile;
             //Destroy(collision.gameObject);
 
+        }
+        if (collision.gameObject.CompareTag("Lava"))
+        {
+            removeSnow(LavaChangeAmount);
+        }
+        if (collision.gameObject.CompareTag("Port1"))
+        {
+            SceneManager.LoadScene(2);
+        }
+        if (collision.gameObject.CompareTag("Port2"))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
