@@ -55,6 +55,7 @@ public class Player_Controler : MonoBehaviour
         rb.AddForce(movementDelta * Input.GetAxis("Horizontal"));
 
         Jump();
+        Reset();
     }
 
     private void Jump()
@@ -70,6 +71,16 @@ public class Player_Controler : MonoBehaviour
                 pile.GetComponent<SnowPilePrefab>().storedSnow = jumpCost;
                 removeSnow(jumpCost);
             }
+        }
+    }
+
+    private void Reset()
+    {
+        if (Input.GetKeyDown(KeyCode.R) == true)
+        {
+            //Application.LoadLevel(Application.loadedLevel);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
         }
     }
 
