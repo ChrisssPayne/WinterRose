@@ -2598,7 +2598,9 @@ MonoBehaviour:
 
     RIGHT -> D
 
-    JUMP -> Space'
+    JUMP -> Space
+
+    RESET -> R'
 --- !u!222 &1828387189
 CanvasRenderer:
   m_ObjectHideFlags: 0
