@@ -62,15 +62,17 @@ public class Player_Controler : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
-            isJumping = true;
-            rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
-            if (this.transform.localScale.x > 0.3 && this.transform.localScale.y > 0.3)
-            {
-                GameObject pile;
-                pile = Instantiate(SnowPrefab, this.transform.position, transform.rotation, null);
-                pile.GetComponent<SnowPilePrefab>().storedSnow = jumpCost;
-                removeSnow(jumpCost);
-            }
+            //Chris WAS HERE
+
+            //isJumping = true;
+            //rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
+            //if (this.transform.localScale.x > 0.3 && this.transform.localScale.y > 0.3)
+            //{
+            //    GameObject pile;
+            //    pile = Instantiate(SnowPrefab, this.transform.position, transform.rotation, null);
+            //    pile.GetComponent<SnowPilePrefab>().storedSnow = jumpCost;
+            //    removeSnow(jumpCost);
+            //}
         }
     }
 
