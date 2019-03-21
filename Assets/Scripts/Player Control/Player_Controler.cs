@@ -56,6 +56,7 @@ public class Player_Controler : MonoBehaviour
 
         Jump();
         Reset();
+        checkIfAlive();
     }
 
     private void Jump()
@@ -102,7 +103,9 @@ public class Player_Controler : MonoBehaviour
         this.enabled = false;
         if (restartTime <= 0)
         {
-            Application.LoadLevel(Application.loadedLevel);
+            //Application.LoadLevel(Application.loadedLevel);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
         }
         restartTime = restartTime - 0.001f;
         
@@ -120,6 +123,15 @@ public class Player_Controler : MonoBehaviour
         if(snow < 0)
             killPlayer();
        
+    }
+
+    public void checkIfAlive()
+    {
+        if (snow < 0)
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
     }
 
     public void addSnow(float amountToAdd)
