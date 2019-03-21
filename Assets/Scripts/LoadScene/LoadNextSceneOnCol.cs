@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoadNextSceneOnCol : MonoBehaviour
 {
     private int sceneIndex = 2;
-    public void OnTriggerEnter2D(Collider col)
+    public void OnTriggerEnter2D(Collider2D col)
     {
         if (col.name == "Snowball")
         {

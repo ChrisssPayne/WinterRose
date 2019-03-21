@@ -100,7 +100,7 @@ public class Player_Controler : MonoBehaviour
     {
         this.rb.velocity = Vector2.zero;
         this.rb.isKinematic = false;
-        this.enabled = false;
+        //this.enabled = false;
         if (restartTime <= 0)
         {
             //Application.LoadLevel(Application.loadedLevel);
@@ -164,10 +164,7 @@ public class Player_Controler : MonoBehaviour
             //Destroy(collision.gameObject);
 
         }
-        if (collision.gameObject.CompareTag("Lava"))
-        {
-            removeSnow(LavaChangeAmount);
-        }
+        
         if (collision.gameObject.CompareTag("Port1"))
         {
             SceneManager.LoadScene(2);
@@ -178,6 +175,15 @@ public class Player_Controler : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Lava"))
+        {
+            print(LavaChangeAmount);
+            removeSnow(LavaChangeAmount);
+        }
+    }
+    
 
     private void OnCollisionExit(Collision collision)
     {
