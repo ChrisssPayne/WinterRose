@@ -12,6 +12,7 @@ TagManager:
   - Lava
   - Port1
   - Port2
+  - Port3
   layers:
   - Default
   - TransparentFX

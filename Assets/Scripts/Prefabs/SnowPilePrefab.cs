@@ -22,7 +22,7 @@ public class SnowPilePrefab : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         snowPileRenderer = this.GetComponent<SpriteRenderer>();
         snowPileRenderer.enabled = true;
-        active = false;    
+        //active = false;    
     }
     
 
@@ -49,7 +49,7 @@ public class SnowPilePrefab : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Snowball"))
         {
-            active = true;
+            active = false;
         }
     }
 
