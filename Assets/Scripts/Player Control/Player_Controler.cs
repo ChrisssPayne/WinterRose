@@ -171,7 +171,15 @@ public class Player_Controler : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Port2"))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(3);
+        }
+        if (collision.gameObject.CompareTag("Port3"))
+        {
+            SceneManager.LoadScene(4);
+        }
+        if (collision.gameObject.CompareTag("Port4"))
+        {
+            SceneManager.LoadScene(5);
         }
     }
 
