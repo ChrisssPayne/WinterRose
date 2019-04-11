@@ -33,6 +33,8 @@ public class Player_Controler : MonoBehaviour
 
     public float restartTime = 1f;
 
+    private bool isDead = false;
+
     //public objects
     //public GameObject SnowPile;
     //public GameObject SnowPrefab;
@@ -51,45 +53,21 @@ public class Player_Controler : MonoBehaviour
     {
         //Snowball = GameObject.Find("Snowball");
         //pos = this.transform.position;
+        if(!this.isDead)
+            rb.AddForce(movementDelta * Input.GetAxis("Horizontal"));
 
-        rb.AddForce(movementDelta * Input.GetAxis("Horizontal"));
 
-        Jump();
         Reset();
         checkIfAlive();
-    }
-
-    private void Jump()
-    {
-        if (Input.GetButtonDown("Jump") && !isJumping)
-        {
-            //Chris WAS HERE
-
-            //isJumping = true;
-            //rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
-            //if (this.transform.localScale.x > 0.3 && this.transform.localScale.y > 0.3)
-            //{
-            //    GameObject pile;
-            //    pile = Instantiate(SnowPrefab, this.transform.position, transform.rotation, null);
-            //    pile.GetComponent<SnowPilePrefab>().storedSnow = jumpCost;
-            //    removeSnow(jumpCost);
-            //}
-        }
     }
 
     private void Reset()
     {
         if (Input.GetKeyDown(KeyCode.R) == true)
         {
-            //Application.LoadLevel(Application.loadedLevel);
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }
-    }
-
-    private void CalculateRotation()
-    {
-        
     }
 
     private void resizePlayer()
@@ -100,14 +78,9 @@ public class Player_Controler : MonoBehaviour
     {
         this.rb.velocity = Vector2.zero;
         this.rb.isKinematic = false;
+        this.isDead = true;
         //this.enabled = false;
-        if (restartTime <= 0)
-        {
-            //Application.LoadLevel(Application.loadedLevel);
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
-        }
-        restartTime = restartTime - 0.001f;
+        
         
     }
 
@@ -127,10 +100,17 @@ public class Player_Controler : MonoBehaviour
 
     public void checkIfAlive()
     {
-        if (snow < 0)
+        if (this.isDead)
         {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            restartTime = restartTime - 0.01f;
+            Debug.Log(restartTime);
+            if (restartTime <= 0)
+            {
+                //Application.LoadLevel(Application.loadedLevel);
+                Scene scene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(scene.name);
+            }
+
         }
     }
 
@@ -148,6 +128,11 @@ public class Player_Controler : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isJumping = false;
+        }
+
+        if (collision.gameObject.CompareTag("Kill") || collision.gameObject.CompareTag("Lava"))
+        {
+            killPlayer();
         }
 
         if (collision.gameObject.CompareTag("SnowPile"))
@@ -185,10 +170,15 @@ public class Player_Controler : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Lava"))
+
+        if (collision.gameObject.CompareTag("Heat"))
         {
             print(LavaChangeAmount);
             removeSnow(LavaChangeAmount);
+        }
+        if (collision.gameObject.CompareTag("Kill") || collision.gameObject.CompareTag("Lava"))
+        {
+            killPlayer();
         }
     }
     
