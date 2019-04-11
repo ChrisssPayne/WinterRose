@@ -170,18 +170,21 @@ public class Player_Controler : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-
-        if (collision.gameObject.CompareTag("Heat"))
-        {
-            print(LavaChangeAmount);
-            removeSnow(LavaChangeAmount);
-        }
         if (collision.gameObject.CompareTag("Kill") || collision.gameObject.CompareTag("Lava"))
         {
             killPlayer();
         }
     }
-    
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Heat"))
+        {
+            Debug.Log(LavaChangeAmount);
+            removeSnow(LavaChangeAmount);
+        }
+    }
+
 
     private void OnCollisionExit(Collision collision)
     {
