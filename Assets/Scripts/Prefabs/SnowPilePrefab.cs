@@ -33,14 +33,17 @@ public class SnowPilePrefab : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Snowball"))
+        if (!collision.gameObject.GetComponent<Player_Controler>().isDead)
         {
-            if (active)
+            if (collision.gameObject.CompareTag("Snowball"))
             {
-                //give snow to snowball
-                collision.gameObject.GetComponent<Player_Controler>().addSnow(storedSnow);
-                Destroy(gameObject);
-                Debug.Log("I SHOULD BE DEAD!");
+                if (active)
+                {
+                    //give snow to snowball
+                    collision.gameObject.GetComponent<Player_Controler>().addSnow(storedSnow);
+                    Destroy(gameObject);
+                    Debug.Log("I SHOULD BE DEAD!");
+                }
             }
         }
     }

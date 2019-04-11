@@ -29,21 +29,24 @@ public class SnowTilePrefab : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Snowball"))
+        if (!collision.gameObject.GetComponent<Player_Controler>().isDead)
         {
-            if (active)
+            if (collision.gameObject.CompareTag("Snowball"))
             {
-                //give snow to snowball
-                collision.gameObject.GetComponent<Player_Controler>().addSnow(snowChangeAmount);
-                snowTileRenderer.enabled = false;
-                active = false;
-            }
-            else
-            {
-                //take snow from snowball
-                collision.gameObject.GetComponent<Player_Controler>().removeSnow(snowChangeAmount);
-                snowTileRenderer.enabled = true;
-                active = true;
+                if (active)
+                {
+                    //give snow to snowball
+                    collision.gameObject.GetComponent<Player_Controler>().addSnow(snowChangeAmount);
+                    snowTileRenderer.enabled = false;
+                    active = false;
+                }
+                else
+                {
+                    //take snow from snowball
+                    collision.gameObject.GetComponent<Player_Controler>().removeSnow(snowChangeAmount);
+                    snowTileRenderer.enabled = true;
+                    active = true;
+                }
             }
         }
     }

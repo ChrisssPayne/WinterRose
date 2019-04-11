@@ -33,7 +33,7 @@ public class Player_Controler : MonoBehaviour
 
     public float restartTime = 1f;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
     //public objects
     //public GameObject SnowPile;
