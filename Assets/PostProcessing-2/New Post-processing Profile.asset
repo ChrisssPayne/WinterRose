@@ -15,7 +15,33 @@ MonoBehaviour:
   settings:
   - {fileID: 114368432654777452}
   - {fileID: 114447278901939590}
-  - {fileID: 114726242202296378}
+  - {fileID: 114001589289573410}
+--- !u!114 &114001589289573410
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6050e2d5de785ce4d931e4dbdbf2d755, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 0
+  enabled:
+    overrideState: 1
+    value: 1
+  spectralLut:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  intensity:
+    overrideState: 1
+    value: 1
+  fastMode:
+    overrideState: 0
+    value: 0
 --- !u!114 &114368432654777452
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -34,10 +60,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 10
+    value: 9
   threshold:
     overrideState: 0
-    value: 1
+    value: 0.43
   softKnee:
     overrideState: 0
     value: 0.5
@@ -49,7 +75,7 @@ MonoBehaviour:
     value: 7
   anamorphicRatio:
     overrideState: 0
-    value: 0
+    value: -1
   color:
     overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}
@@ -62,7 +88,7 @@ MonoBehaviour:
     defaultState: 1
   dirtIntensity:
     overrideState: 0
-    value: 0
+    value: 145.98
 --- !u!114 &114447278901939590
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -105,33 +131,5 @@ MonoBehaviour:
     value: {fileID: 0}
     defaultState: 1
   opacity:
-    overrideState: 0
-    value: 1
---- !u!114 &114726242202296378
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
-  m_Name: DepthOfField
-  m_EditorClassIdentifier: 
-  active: 1
-  enabled:
-    overrideState: 1
-    value: 1
-  focusDistance:
-    overrideState: 1
-    value: 0.1
-  aperture:
-    overrideState: 0
-    value: 5.6
-  focalLength:
-    overrideState: 0
-    value: 50
-  kernelSize:
     overrideState: 0
     value: 1
