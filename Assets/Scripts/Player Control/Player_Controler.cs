@@ -95,7 +95,7 @@ public class Player_Controler : MonoBehaviour
             resizePlayer();
             rb.mass = this.snow / 50;
             float difference = this.snow / starting_snow;
-            this.force = 0.5f * difference;
+            this.force = 0.4f * difference + 0.1f;
         }
 
         if(snow < 0)
@@ -127,7 +127,7 @@ public class Player_Controler : MonoBehaviour
             resizePlayer();
             rb.mass = this.snow / 50;
             float difference = this.snow / starting_snow;
-            this.force = 0.5f * difference;
+            this.force = 0.4f * difference + 0.1f;
 
         }
     }
