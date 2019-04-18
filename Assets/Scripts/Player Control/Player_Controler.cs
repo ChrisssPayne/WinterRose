@@ -34,6 +34,8 @@ public class Player_Controler : MonoBehaviour
     public float restartTime = 1f;
 
     public bool isDead = false;
+    private float force = 0.5f;
+    private float starting_snow;
 
     //public objects
     //public GameObject SnowPile;
@@ -44,7 +46,7 @@ public class Player_Controler : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         movementDelta.x = movementSpeed;
-
+        this.starting_snow = snow;
         resizePlayer();
     }
 
@@ -54,7 +56,7 @@ public class Player_Controler : MonoBehaviour
         //Snowball = GameObject.Find("Snowball");
         //pos = this.transform.position;
         if(!this.isDead)
-            rb.AddForce(movementDelta * Input.GetAxis("Horizontal"));
+            rb.AddForce(movementDelta * Input.GetAxis("Horizontal") * this.force);
 
 
         Reset();
@@ -91,6 +93,9 @@ public class Player_Controler : MonoBehaviour
         {
             snow -= amountToRemove;
             resizePlayer();
+            rb.mass = this.snow / 50;
+            float difference = this.snow / starting_snow;
+            this.force = 0.5f * difference;
         }
 
         if(snow < 0)
@@ -120,6 +125,10 @@ public class Player_Controler : MonoBehaviour
         {
             snow += amountToAdd;
             resizePlayer();
+            rb.mass = this.snow / 50;
+            float difference = this.snow / starting_snow;
+            this.force = 0.5f * difference;
+
         }
     }
 
