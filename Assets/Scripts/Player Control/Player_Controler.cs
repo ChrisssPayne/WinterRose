@@ -19,7 +19,6 @@ public class Player_Controler : MonoBehaviour
     //Private Member Variables
     private Rigidbody2D rb;
     private Vector2 movementDelta = Vector2.zero;
-    private bool isJumping;
     private Vector3 startPos;
     public float snow;
     public float jumpCost;
@@ -35,7 +34,7 @@ public class Player_Controler : MonoBehaviour
 
     public bool isDead = false;
     private float force = 0.5f;
-    private float starting_snow;
+    private float starting_snow = 25;
 
     //public objects
     //public GameObject SnowPile;
@@ -46,18 +45,19 @@ public class Player_Controler : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         movementDelta.x = movementSpeed;
-        this.starting_snow = snow;
         resizePlayer();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(this.rb.mass);
         //Snowball = GameObject.Find("Snowball");
         //pos = this.transform.position;
-        if(!this.isDead)
+        if (!this.isDead)
+        {
             rb.AddForce(movementDelta * Input.GetAxis("Horizontal") * this.force);
-
+        }
 
         Reset();
         checkIfAlive();
@@ -81,9 +81,10 @@ public class Player_Controler : MonoBehaviour
         this.rb.velocity = Vector2.zero;
         this.rb.isKinematic = false;
         this.isDead = true;
+        this.rb.mass = 1;
         //this.enabled = false;
-        
-        
+
+
     }
 
     public void removeSnow(float amountToRemove)
@@ -93,13 +94,19 @@ public class Player_Controler : MonoBehaviour
         {
             snow -= amountToRemove;
             resizePlayer();
+            if (snow < 0)
+                killPlayer();
             rb.mass = this.snow / 50;
+            if (rb.mass < 0.1f)
+                rb.mass = 0.1f;
             float difference = this.snow / starting_snow;
             this.force = 0.4f * difference + 0.1f;
         }
 
-        if(snow < 0)
+        if (snow < 0)
+        {
             killPlayer();
+        }
        
     }
 
@@ -126,6 +133,8 @@ public class Player_Controler : MonoBehaviour
             snow += amountToAdd;
             resizePlayer();
             rb.mass = this.snow / 50;
+            if (rb.mass < 0.1f)
+                rb.mass = 0.1f;
             float difference = this.snow / starting_snow;
             this.force = 0.4f * difference + 0.1f;
 
@@ -134,10 +143,6 @@ public class Player_Controler : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isJumping = false;
-        }
 
         if (collision.gameObject.CompareTag("Kill") || collision.gameObject.CompareTag("Lava"))
         {
