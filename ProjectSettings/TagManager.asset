@@ -13,6 +13,7 @@ TagManager:
   - Port1
   - Port2
   - Port3
+  - Piece
   layers:
   - Default
   - TransparentFX

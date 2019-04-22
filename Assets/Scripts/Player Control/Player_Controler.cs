@@ -33,6 +33,11 @@ public class Player_Controler : MonoBehaviour
     public float restartTime = 1f;
 
     public bool isDead = false;
+
+
+    public GameObject[] Pieces;
+
+
     private float force = 0.5f;
     private float starting_snow = 25;
 
@@ -43,6 +48,8 @@ public class Player_Controler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Pieces = GameObject.FindGameObjectsWithTag("Piece");
+
         rb = GetComponent<Rigidbody2D>();
         movementDelta.x = movementSpeed;
         resizePlayer();
@@ -78,10 +85,24 @@ public class Player_Controler : MonoBehaviour
     }
     public void killPlayer()
     {
+        //Turn off and Kill Snowball
+
+        this.GetComponent<SpriteRenderer>().enabled = false;
+
         this.rb.velocity = Vector2.zero;
         this.rb.isKinematic = false;
         this.isDead = true;
         this.rb.mass = 1;
+
+        //Make the Pieces appear and behave kinematically
+
+        foreach (GameObject piece in Pieces)
+        {
+            piece.GetComponent<SpriteRenderer>().enabled = true;
+            piece.GetComponent<PolygonCollider2D>().enabled = true;
+            piece.GetComponent<Rigidbody2D>().simulated = true;
+
+        }
         //this.enabled = false;
 
 
