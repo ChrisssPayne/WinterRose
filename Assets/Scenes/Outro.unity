@@ -2560,6 +2560,7 @@ MonoBehaviour:
   LavaChangeAmount: 1
   restartTime: 1
   isDead: 0
+  hasControl: 0
   Pieces: []
 --- !u!58 &719795166
 CircleCollider2D:

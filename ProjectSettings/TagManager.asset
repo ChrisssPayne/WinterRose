@@ -14,6 +14,7 @@ TagManager:
   - Port2
   - Port3
   - Piece
+  - Kill
   layers:
   - Default
   - TransparentFX
