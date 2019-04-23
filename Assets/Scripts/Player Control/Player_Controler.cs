@@ -33,7 +33,7 @@ public class Player_Controler : MonoBehaviour
     public float restartTime = 1f;
 
     public bool isDead = false;
-
+    public bool hasControl = true;
 
     public GameObject[] Pieces;
 
@@ -63,7 +63,8 @@ public class Player_Controler : MonoBehaviour
         //pos = this.transform.position;
         if (!this.isDead)
         {
-            rb.AddForce(movementDelta * Input.GetAxis("Horizontal") * this.force);
+            if(hasControl)
+                rb.AddForce(movementDelta * Input.GetAxis("Horizontal") * this.force);
         }
 
         Reset();
