@@ -139,9 +139,18 @@ public class Player_Controler : MonoBehaviour
             Debug.Log(restartTime);
             if (restartTime <= 0)
             {
+                
                 //Application.LoadLevel(Application.loadedLevel);
                 Scene scene = SceneManager.GetActiveScene();
-                SceneManager.LoadScene(scene.name);
+                if(scene.buildIndex == 4)
+                {
+                    restartTime = 1.0f;
+                }
+                else
+                {
+                    SceneManager.LoadScene(scene.name);
+
+                }
             }
 
         }
