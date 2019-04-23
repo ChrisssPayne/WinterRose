@@ -75,8 +75,11 @@ public class Player_Controler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) == true)
         {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            if (hasControl)
+            {
+                Scene scene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(scene.name);
+            }
         }
     }
 
