@@ -218,7 +218,7 @@ public class Player_Controler : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Kill") || collision.gameObject.CompareTag("Lava"))
+        if (collision.gameObject.CompareTag("Lava"))
         {
             killPlayer();
         }
@@ -230,6 +230,10 @@ public class Player_Controler : MonoBehaviour
         {
             Debug.Log(LavaChangeAmount);
             removeSnow(LavaChangeAmount);
+        }
+        if (collision.gameObject.CompareTag("Kill"))
+        {
+            killPlayer();
         }
     }
 
