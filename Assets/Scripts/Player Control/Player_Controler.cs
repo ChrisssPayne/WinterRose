@@ -31,6 +31,7 @@ public class Player_Controler : MonoBehaviour
     public float LavaChangeAmount = 1.0f;
 
     public float restartTime = 1f;
+    private bool lastLoop = true;
 
     public bool isDead = false;
     public bool hasControl = true;
@@ -139,6 +140,7 @@ public class Player_Controler : MonoBehaviour
     {
         if (this.isDead)
         {
+
             restartTime = restartTime - 0.01f;
             Debug.Log(restartTime);
             if (restartTime <= 0)
@@ -148,7 +150,16 @@ public class Player_Controler : MonoBehaviour
                 Scene scene = SceneManager.GetActiveScene();
                 if(scene.buildIndex == 4)
                 {
-                    restartTime = 1.0f;
+                    if (lastLoop)
+                    {
+                        restartTime = 4.0f;
+                        lastLoop = false;
+                    }
+                    else
+                    {
+                        
+                        SceneManager.LoadScene(0);
+                    }
                 }
                 else
                 {
