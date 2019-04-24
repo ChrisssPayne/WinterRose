@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311912, g: 0.3807398, b: 0.3587271, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3323,8 +3323,9 @@ GameObject:
   m_Component:
   - component: {fileID: 206196478}
   - component: {fileID: 206196477}
+  - component: {fileID: 206196479}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3392,6 +3393,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 359
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &206196479
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206196476}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
 --- !u!1001 &214692782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18158,6 +18170,7 @@ GameObject:
   - component: {fileID: 1338455749}
   - component: {fileID: 1338455748}
   - component: {fileID: 1338455747}
+  - component: {fileID: 1338455750}
   m_Layer: 0
   m_Name: Story (1)
   m_TagString: Untagged
@@ -18175,9 +18188,7 @@ TextMesh:
   m_GameObject: {fileID: 1338455746}
   m_Text: 'A and D
 
-    or
-
-    arrrow keys
+    or arrrow keys
 
     to move'
   m_OffsetZ: 0
@@ -18186,7 +18197,7 @@ TextMesh:
   m_Anchor: 0
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 200
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 767343a3f72859046ae1833ab5fa38a5, type: 3}
@@ -18239,12 +18250,23 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338455746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -63.9, y: 89.69, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -59.68, y: 86.8, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 358
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &1338455750
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338455746}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
 --- !u!1001 &1352056902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26924,7 +26946,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902134830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42, y: 35, z: -30}
+  m_LocalPosition: {x: -32.7, y: 101.7, z: -30}
   m_LocalScale: {x: 1.573, y: 1.573, z: 1.573}
   m_Children: []
   m_Father: {fileID: 0}
@@ -33188,6 +33210,7 @@ GameObject:
   - component: {fileID: 2005356162}
   - component: {fileID: 2005356161}
   - component: {fileID: 2005356160}
+  - component: {fileID: 2005356163}
   m_Layer: 0
   m_Name: Story
   m_TagString: Untagged
@@ -33212,7 +33235,7 @@ TextMesh:
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 200
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 767343a3f72859046ae1833ab5fa38a5, type: 3}
@@ -33265,12 +33288,23 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005356159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52.35, y: 100.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -55.2, y: 100.94, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 357
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &2005356163
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005356159}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
 --- !u!1001 &2008146416
 PrefabInstance:
   m_ObjectHideFlags: 0

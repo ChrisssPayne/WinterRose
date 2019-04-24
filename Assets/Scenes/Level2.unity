@@ -13939,7 +13939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42, y: -14, z: -30}
+  m_LocalPosition: {x: -10.6, y: 46.1, z: -30}
   m_LocalScale: {x: 1.573, y: 1.573, z: 1.573}
   m_Children: []
   m_Father: {fileID: 0}
@@ -25481,6 +25481,7 @@ MonoBehaviour:
   LavaChangeAmount: 1
   restartTime: 1
   isDead: 0
+  hasControl: 1
   Pieces: []
 --- !u!58 &1197873076
 CircleCollider2D:
@@ -39726,6 +39727,7 @@ GameObject:
   - component: {fileID: 1442611556}
   - component: {fileID: 1442611555}
   - component: {fileID: 1442611554}
+  - component: {fileID: 1442611557}
   m_Layer: 0
   m_Name: Story
   m_TagString: Untagged
@@ -39741,15 +39743,15 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442611553}
-  m_Text: "The path was \ntreacherous\nand only through \ngreat sacrifice \ndid the
-    snowball\nfind its way."
+  m_Text: "The path \nwas treacherous\nand only through \ngreat sacrifice did the
+    \nsnowball find its way."
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 200
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 767343a3f72859046ae1833ab5fa38a5, type: 3}
@@ -39802,12 +39804,23 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442611553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.13, y: 25.41, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -15.73, y: 18.08, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &1442611557
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442611553}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
 --- !u!1001 &1446027878
 PrefabInstance:
   m_ObjectHideFlags: 0
