@@ -6,6 +6,15 @@ TagManager:
   tags:
   - SnowPile
   - SnowTile
+  - Ground
+  - Snowball
+  - Wall
+  - Lava
+  - Port1
+  - Port2
+  - Port3
+  - Piece
+  - Kill
   layers:
   - Default
   - TransparentFX
@@ -15,7 +24,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Post
   - 
   - 
   - 
