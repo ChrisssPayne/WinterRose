@@ -69,6 +69,7 @@ public class Player_Controler : MonoBehaviour
         }
 
         Reset();
+        checkForFinalScene();
         checkIfAlive();
     }
 
@@ -133,7 +134,28 @@ public class Player_Controler : MonoBehaviour
         {
             killPlayer();
         }
-       
+    }
+
+    public void checkForFinalScene()
+    {
+        Time.timeScale = 1f;
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.buildIndex == 5 && snow < 10)
+        {
+            Time.timeScale = .7f;
+        }
+        if (scene.buildIndex == 5 && snow < 5)
+        {
+            Time.timeScale = .5f;
+        }
+        if (scene.buildIndex == 5 && snow < 2.5)
+        {
+            Time.timeScale = .3f;
+        }
+        if (scene.buildIndex == 5 && snow < 0)
+        {
+            //SceneManager.LoadScene(6);
+        }
     }
 
     public void checkIfAlive()
@@ -211,19 +233,19 @@ public class Player_Controler : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Port1"))
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
         if (collision.gameObject.CompareTag("Port2"))
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(4);
         }
         if (collision.gameObject.CompareTag("Port3"))
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(5);
         }
         if (collision.gameObject.CompareTag("Port4"))
         {
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene(6);
         }
     }
 
